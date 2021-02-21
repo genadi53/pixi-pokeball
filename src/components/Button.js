@@ -2,9 +2,6 @@ import { Container, Graphics } from 'pixi.js';
 import {Text, TextStyle} from 'pixi.js';
 
 
-/**
- * @class
- */
 export default class Button extends Container{
     constructor(){
         super();
@@ -32,7 +29,8 @@ export default class Button extends Container{
 
 
 /**
- *  @private - Create the button
+ *  @description Create Button object
+ *  @private
  *  @returns {PIXI.Graphics}
  */
     createButton(){
