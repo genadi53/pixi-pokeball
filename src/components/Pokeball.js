@@ -7,15 +7,14 @@ export default class Pokeball extends Container{
         super();
         this.name = 'pokeball';
         this.text = this.createText();
-        
-        this.top = this.createSprite(new Texture.from('top'), 0, -100);
-        this.bottom = this.createSprite(new Texture.from('bottom'), 0, 90);
+    
+        this.top = this.createSprite(Texture.from('top'), 0, -100);
+        this.bottom = this.createSprite(Texture.from('bottom'), 0, 90);
+
+        this.isOpened = false;
 
         this.addChild(this.top);
         this.addChild(this.bottom);
-
-
-        this.isOpened = false;
 
     }
 
@@ -28,11 +27,14 @@ export default class Pokeball extends Container{
         }
     };
 
+    /**
+     *  @description Opens the Pokeball
+     */
     async open(){
-        const animation = new gsap.timeline();
 
         this.isOpened = true;
         this.emit(Pokeball.events.OPEN_START);
+        const animation = new gsap.timeline();
 
         animation
             .to(this.top, {y : "-=200", duration: 0.5})
@@ -43,6 +45,9 @@ export default class Pokeball extends Container{
         this.emit(Pokeball.events.OPEN_END);
     }
 
+    /**
+     *  @description Closes the Pokeball
+     */
     close(){
 
         this.isOpened = false;
@@ -59,6 +64,7 @@ export default class Pokeball extends Container{
     }
 
     /**
+     *  @description Creates Sprite by given texture and coordinates
      *  @private 
      *  @param {PIXI.Texture}
      *  @param {number} x
@@ -76,7 +82,9 @@ export default class Pokeball extends Container{
 
 
     /**
-     * 
+     *  @description Create a Text object
+     *  @returns {PIXI.Text}
+     *  @private
      */
     createText(){
 
@@ -85,6 +93,7 @@ export default class Pokeball extends Container{
             fontSize: 200,
             fontStyle: 'bold'
         });
+
         text.y = -100;
         text.anchor.set(0.5);
         text.alpha = 0;
@@ -92,7 +101,10 @@ export default class Pokeball extends Container{
         return text;
     }
 
-
+    /**
+     * @description Set the name of random pokemon to the text object
+     * @private
+     */
     _setRandomText(){
         const pokemons = [
             'Bulbasaur', 'Ivysaur', 'Charmander', 'Pikachu', 'Charizard'
@@ -101,7 +113,7 @@ export default class Pokeball extends Container{
     }
 
 
-    /**
+    /** 
      * @returns {Promise}
      * @private
      */
