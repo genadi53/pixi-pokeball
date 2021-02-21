@@ -59,8 +59,7 @@ export default class Pokeball extends Container{
             .to(this.top, {y : "+=200", duration: 0.5})
             .to(this.bottom, {y: "-= 100", duration: 0.5}, "<");
 
-        
-        this.emit(Pokeball.events.OPEN_END);
+        this.emit(Pokeball.events.CLOSE_END);
     }
 
     /**
