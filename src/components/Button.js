@@ -6,15 +6,14 @@ export default class Button extends Container{
     constructor(){
         super();
         this.name = 'button';
+        this.button = this.createButton();
 
-        
         this.x = -100;
         this.y = 240;
 
         this.interactive = true;
         this.buttonMode = true;
 
-        this.button = this.createButton();
         this.addChild(this.button);
         
     }
@@ -29,7 +28,7 @@ export default class Button extends Container{
 
 
 /**
- *  @description Create Button object
+ *  @description Creates the Button object
  *  @private
  *  @returns {PIXI.Graphics}
  */
